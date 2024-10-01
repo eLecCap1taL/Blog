@@ -9,31 +9,40 @@ let imageNaturalWidth = 0;
 let imageNaturalHeight = 0;
 
 function fetchMapNames() {
-    fetch('/CSRM/C4Position/mapdata/')
-        .then(response => response.text())
-        .then(text => {
-            const parser = new DOMParser();
-            const htmlDoc = parser.parseFromString(text, 'text/html');
-            const links = htmlDoc.getElementsByTagName('a');
-
-            for (let link of links) {
-                const fileName = link.href.split('/').pop();
-                if (fileName.endsWith('.json')) {
-                    const mapName = fileName.replace('.json', '');
-                    const option = document.createElement('option');
-                    option.value = mapName;
-                    option.textContent = mapName;
-                    mapSelect.appendChild(option);
-                }
-            }
-        })
-        .catch(error => console.error('Error fetching map names:', error));
+    option1 = document.createElement('option');
+    option1.value = "Dust2";
+    option1.textContent = "dust2";
+    mapSelect.appendChild(option1);
+    option2 = document.createElement('option');
+    option2.value = "Mirage";
+    option2.textContent = "mirage";
+    mapSelect.appendChild(option2);
+    option3 = document.createElement('option');
+    option3.value = "Inferno";
+    option3.textContent = "inferno";
+    mapSelect.appendChild(option3);
+    option4 = document.createElement('option');
+    option4.value = "Ancient";
+    option4.textContent = "ancient";
+    mapSelect.appendChild(option4);
+    option5 = document.createElement('option');
+    option5.value = "Nuke";
+    option5.textContent = "nuke";
+    mapSelect.appendChild(option5);
+    option6 = document.createElement('option');
+    option6.value = "Vertigo";
+    option6.textContent = "vertigo";
+    mapSelect.appendChild(option6);
+    option7 = document.createElement('option');
+    option7.value = "Anubis";
+    option7.textContent = "anubis";
+    mapSelect.appendChild(option7);
 }
 
 mapSelect.addEventListener('change', function () {
     const selectedMap = this.value;
     if (selectedMap) {
-        mapImage.src = `map/${selectedMap}.png`;
+        mapImage.src = `/CSRM/C4Position/map/${selectedMap}.png`;
         fetch(`mapdata/${selectedMap}.json`)
             .then(response => response.json())
             .then(data => {
