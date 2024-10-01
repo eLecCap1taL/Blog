@@ -10,32 +10,32 @@ let imageNaturalHeight = 0;
 
 function fetchMapNames() {
     option1 = document.createElement('option');
-    option1.value = "Dust2";
-    option1.textContent = "dust2";
+    option1.textContent = "Dust2";
+    option1.value = "dust2";
     mapSelect.appendChild(option1);
     option2 = document.createElement('option');
-    option2.value = "Mirage";
-    option2.textContent = "mirage";
+    option2.textContent = "Mirage";
+    option2.value = "mirage";
     mapSelect.appendChild(option2);
     option3 = document.createElement('option');
-    option3.value = "Inferno";
-    option3.textContent = "inferno";
+    option3.textContent = "Inferno";
+    option3.value = "inferno";
     mapSelect.appendChild(option3);
     option4 = document.createElement('option');
-    option4.value = "Ancient";
-    option4.textContent = "ancient";
+    option4.textContent = "Ancient";
+    option4.value = "ancient";
     mapSelect.appendChild(option4);
     option5 = document.createElement('option');
-    option5.value = "Nuke";
-    option5.textContent = "nuke";
+    option5.textContent = "Nuke";
+    option5.value = "nuke";
     mapSelect.appendChild(option5);
     option6 = document.createElement('option');
-    option6.value = "Vertigo";
-    option6.textContent = "vertigo";
+    option6.textContent = "Vertigo";
+    option6.value = "vertigo";
     mapSelect.appendChild(option6);
     option7 = document.createElement('option');
-    option7.value = "Anubis";
-    option7.textContent = "anubis";
+    option7.textContent = "Anubis";
+    option7.value = "anubis";
     mapSelect.appendChild(option7);
 }
 
