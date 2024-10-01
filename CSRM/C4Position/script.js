@@ -9,7 +9,7 @@ let imageNaturalWidth = 0;
 let imageNaturalHeight = 0;
 
 function fetchMapNames() {
-    fetch('/mapdata/')
+    fetch('/CSRM/C4Position/mapdata/')
         .then(response => response.text())
         .then(text => {
             const parser = new DOMParser();
