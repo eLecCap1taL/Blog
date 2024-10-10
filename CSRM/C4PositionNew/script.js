@@ -55,7 +55,7 @@ function fetchMapNames() {
     mapSelect.appendChild(option9);
     option10 = document.createElement('option');
     option10.textContent = "Thera";
-    option10.value = "Thera";
+    option10.value = "thera";
     mapSelect.appendChild(option10);
 }
 
