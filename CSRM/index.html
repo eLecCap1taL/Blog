@@ -103,6 +103,7 @@
 								<p>推荐使用自动安装程序自动下载 (暂不支持)</p>
 								<p>版本列表：</p>
 								<ul>
+									<li><a href="#CSRM-v2-8-Pre-Release-3">CSRM v2.8 Pre-Release 3</a></li>
 									<li><a href="#CSRM-v2-8-Pre-Release-2">CSRM v2.8 Pre-Release 2</a></li>
 									<li><a href="/CSRM/versions/CSRM v2.8 Pre-Release 1.zip">CSRM v2.8 Pre-Release 1</a></li>
 									<li><a href="/CSRM/versions/CSRM v2.71.zip">CSRM v2.71</a></li>
@@ -120,6 +121,25 @@
 									<li><a href="/CSRM/Custom/AutoStopSimple/None.zip">简单版单文件八向急停_无开关</a></li>
 									<li><a href="/CSRM/Custom/AutoStopSimple/Hold.zip">简单版单文件八向急停_按住开关</a></li>
 									<li><a href="/CSRM/Custom/AutoStopSimple/Switch.zip">简单版单文件八向急停_切换开关</a></li>
+								</ul>
+							</article>
+							<article id="CSRM-v2-8-Pre-Release-3">
+								<h2 class="major">CSRM v2.8 Pre-Release 2</h2>
+								<!-- <span class="image main"><img src="images/bg.jpg" alt="" /></span> -->
+								<a href="/CSRM/versions/CSRM v2.8 Pre-Release 3.zip">下载链接</a>
+								<p>更新内容：</p>
+								<ul>
+									<li>全面翻新重写了 QuickGunSwitch(道具投掷后快速切主武器)</li>
+									<li>修复了有时丢不出去道具粘手的问题</li>
+									<li>现在 QGSw 应该与帧数基本无关</li>
+									<li>为 resource 新增了 刷刀 相关词条</li>
+									<li>大幅度优化性能，废弃了 JMove/Ticker，制作了 Addon/Event 和 Eventregedit</li>
+									<li>RegEdit 被废弃，取而代之的是 Keyregedit</li>
+									<li>重写所有事件，设计了新逻辑。现在所有触发经过 key->csrm_event->event(optional) 进行处理</li>
+									<li>优化性能，新增慢速触发器，将部分高频触发移至慢速触发</li>
+									<li>重写所有投掷功能，同时重新制作与 QGSw 的兼容</li>
+									<li>废弃了 IMStop</li>
+									<li>[Preference] 新增了诱饵弹键，新增了一条控制台输出相关功能</li>
 								</ul>
 							</article>
 							<article id="CSRM-v2-8-Pre-Release-2">
