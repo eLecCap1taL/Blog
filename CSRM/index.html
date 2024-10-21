@@ -3,7 +3,7 @@
 	<head>
 		<title>CSRM</title>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+		<meta name="viewport" content="width=device-width，initial-scale=1，user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<link rel="icon" href="/CSRM/images/dark.ico" sizes="16x16">
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
@@ -103,6 +103,7 @@
 								<p>推荐使用自动安装程序自动下载 (暂不支持)</p>
 								<p>版本列表：</p>
 								<ul>
+									<li><a href="#CSRM-v2-8">CSRM v2.8</a></li>
 									<li><a href="#CSRM-v2-8-Pre-Release-4">CSRM v2.8 Pre-Release 4</a></li>
 									<li><a href="#CSRM-v2-8-Pre-Release-3">CSRM v2.8 Pre-Release 3</a></li>
 									<li><a href="#CSRM-v2-8-Pre-Release-2">CSRM v2.8 Pre-Release 2</a></li>
@@ -122,6 +123,27 @@
 									<li><a href="/CSRM/Custom/AutoStopSimple/None.zip">简单版单文件八向急停_无开关</a></li>
 									<li><a href="/CSRM/Custom/AutoStopSimple/Hold.zip">简单版单文件八向急停_按住开关</a></li>
 									<li><a href="/CSRM/Custom/AutoStopSimple/Switch.zip">简单版单文件八向急停_切换开关</a></li>
+								</ul>
+							</article>
+							<article id="CSRM-v2-8">
+								<h2 class="major">CSRM v2.8</h2>
+								<a href="/CSRM/versions/CSRM v2.8.zip">下载链接</a>
+								<p>更新内容：</p>
+								<ul>
+									<li>[Practice] 新增跑图实用功能菜单：一键进入跑图模式，存点/传送存点，重复上一道具，清除所有投掷物，Bot 放置/添加/踢出，全地图出生位传送, 一键刷刀菜单，一键视角切换菜单 (含越肩视角!让你的跑图更有沉浸感!)，一键双架等</li>
+									<li>[Practice & Grenade] 现在在跑图模式中，使用道具菜单的道具在瞄准时会自动传送到对应点位，不用担心不知道自动道具的站位了</li>
+									<li>[QGSw] 重写了道具后速切主武器，修复了粘手情况，而且现在在前摇期间按左键不会切武器</li>
+									<li>[teamDetection] 新增了队伍检测模块</li>
+									<li>[mapDetection] 重写了地图检测，现在支持所有的 17 张地图了</li>
+									<li>[Grenade & teamDetection] 大改道具菜单。现在新增了 T/CT 的分类，而且会自动识别地图和阵营，进一步方便操作</li>
+									<li>[Grenade & Mirage] 新增了大量 Mirage 道具词条。添加了一部分 Mirage 道具进入轮盘</li>
+									<li>[Grenade & Dev] 变动了极个别道具注册的注册名; 更换投掷的内部实现由 JMove 至 csrmEvent; 更换道具速切的实现由 Grenade 至 QGSw; 现在需要指定 csrmGrenade_setpos 以兼容跑图传送功能。详情可见 GrenadeMain.cfg</li>
+									<li>[C4Utilities] 新增了四个地图的地图画，用于识别 C4 坐标</li>
+									<li>[Gyroscope] 陀螺键在高速陀螺下现在有了用处，按下会让你低头，松开恢复准心水平爆头线。手枪局拉枪线蹲着低头转飞出去有奇效</li>
+									<li>[AutoAttack] 重写了手枪速射。现在左键是 tec9/双枪 满速连发，右键是 glock/usp 满速连发，与帧数无关，确保全帧数都能满速开火。其他手枪自行感受选择一个使用即可</li>
+									<li>[Preference] Preference.cfg 被废弃，取而代之的是 keyPreference 和 optPreference</li>
+									<li>[RegEdit] RegEdit 被废弃，取而代之的是 key/eventRegedit</li>
+									<li>[Ticker] 大幅度优化性能，废弃了 JMove/Ticker，制作了 Addon/Event 和 Eventregedit</li>
 								</ul>
 							</article>
 							<article id="CSRM-v2-8-Pre-Release-4">
@@ -204,7 +226,7 @@
 									<h3 class="major">Text</h3>
 									<p>This is <b>bold</b> and this is <strong>strong</strong>. This is <i>italic</i> and this is <em>emphasized</em>.
 									This is <sup>superscript</sup> text and this is <sub>subscript</sub> text.
-									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally, <a href="#">this is a link</a>.</p>
+									This is <u>underlined</u> and this is code: <code>for (;;) { ... }</code>. Finally，<a href="#">this is a link</a>.</p>
 									<hr />
 									<h2>Heading Level 2</h2>
 									<h3>Heading Level 3</h3>
@@ -213,7 +235,7 @@
 									<h6>Heading Level 6</h6>
 									<hr />
 									<h4>Blockquote</h4>
-									<blockquote>Fringilla nisl. Donec accumsan interdum nisi, quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
+									<blockquote>Fringilla nisl. Donec accumsan interdum nisi，quis tincidunt felis sagittis eget tempus euismod. Vestibulum ante ipsum primis in faucibus vestibulum. Blandit adipiscing eu felis iaculis volutpat ac adipiscing accumsan faucibus. Vestibulum ante ipsum primis in faucibus lorem ipsum dolor sit amet nullam adipiscing eu felis.</blockquote>
 									<h4>Preformatted</h4>
 									<pre><code>i = 0;
 
