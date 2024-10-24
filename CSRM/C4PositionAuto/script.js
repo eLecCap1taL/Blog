@@ -347,40 +347,49 @@ const observer = new MutationObserver(function (mutations) {
 observer.observe(mapImage, { attributes: true });
 
 // 初始化
-fetchMapNames();
 
 
-function connect() {
+
+
+
+let reconnectTimeout; // Variable to store the timeout ID
+
+function connectWebSocket() {
+    // 如果已有连接，先关闭旧的 WebSocket 连接
+    if (socket) {
+        socket.close();
+    }
+
+    // 清除上一个 reconnect timeout
+    if (reconnectTimeout) {
+        clearTimeout(reconnectTimeout);
+    }
+
+    const ip = document.getElementById("ipInput").value || "localhost";
+    const port = document.getElementById("portInput").value || "8000";
+    const url = `ws://${ip}:${port}`;
+
     socket = new WebSocket(url);
 
     socket.onopen = function() {
-        console.log('Connected to WebSocket server');
+        console.log("Connected to WebSocket server");
     };
 
     socket.onmessage = function(event) {
         const input = event.data;
-
-        // 使用正则表达式提取坐标
-        const match = input.match(/(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)\s*,\s*(-?\d+\.?\d*)/);
-        
-        if (match) {
-            // 创建成品字符串
-            const coordsString = `${match[1]}, ${match[2]}, ${match[3]}`;
-            // 将成品字符串传递给 processInput 函数
-            processInput(coordsString);
-            console.log(`Coordinates: ${coordsString}`);
-        } else {
-            console.log('No valid coordinates received');
-        }
+        processInput(input);
     };
 
-    socket.onclose = function(event) {
-        console.log('WebSocket connection closed. Attempting to reconnect...');
-        setTimeout(connect, 1000); // 每秒尝试重连一次
+    socket.onclose = function() {
+        console.log("WebSocket connection closed. Trying to reconnect...");
+        reconnectTimeout = setTimeout(connectWebSocket, 3000); // Attempt to reconnect after 1 second
     };
 
     socket.onerror = function(error) {
-        console.error('WebSocket error:', error);
+        console.error("WebSocket error:", error);
     };
 }
-connect(); // 初次连接
+window.onload = function() {
+    fetchMapNames();
+    connectWebSocket(); // Connect on page load
+};
