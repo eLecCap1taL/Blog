@@ -63,7 +63,7 @@ function fetchMapNames() {
 
 // 加载地图数据
 function loadMapData(selectedMap) {
-    fetch(`/CSRM/C4PositionNew/mapdata/${selectedMap}.json`)
+    fetch(`/CSRM/C4PositionAuto/mapdata/${selectedMap}.json`)
         .then(response => response.json())
         .then(data => {
             currentMapData = data;
@@ -78,10 +78,10 @@ function loadMapData(selectedMap) {
 
 // 更新地图显示
 function updateMapDisplay() {
-    mapImage.src = `/CSRM/C4PositionNew/map/${currentMapData.image}`;
+    mapImage.src = `/CSRM/C4PositionAuto/map/${currentMapData.image}`;
 
     if (currentMapData.substructure) {
-        substructureImage.src = `/CSRM/C4PositionNew/map/${currentMapData.substructure_image}`;
+        substructureImage.src = `/CSRM/C4PositionAuto/map/${currentMapData.substructure_image}`;
         substructureImage.style.display = 'none';
     } else {
         substructureImage.src = '';
@@ -189,8 +189,12 @@ function switchMapLayer(mapZ = null) {
 
 // 处理输入的坐标
 function processInput(input) {
-    if (isProcessing || !currentMapData) {
-        console.log('正在处理或地图数据未加载');
+    if (isProcessing) {
+        console.log('正在处理');
+        return;
+    }
+    if (!currentMapData) {
+        console.log('地图数据未加载');
         return;
     }
 
