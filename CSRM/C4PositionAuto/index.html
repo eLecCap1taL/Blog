@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WebSocket Client</title>
+</head>
+<body>
+    <h1>WebSocket Client</h1>
+    <script>
+        let socket;
+        const url = 'ws://localhost:8000'; // WebSocket 服务器地址
+
+        function connect() {
+            socket = new WebSocket(url);
+
+            socket.onopen = function() {
+                console.log('Connected to WebSocket server');
+            };
+
+            socket.onmessage = function(event) {
+                try {
+                    const coords = JSON.parse(event.data);
+                    console.log('Received Coordinates:', coords);
+                } catch (e) {
+                    console.error('Error parsing coordinates:', e);
+                }
+            };
+
+            socket.onclose = function(event) {
+                console.log('WebSocket connection closed. Attempting to reconnect...');
+                setTimeout(connect, 1000); // 每秒尝试重连一次
+            };
+
+            socket.onerror = function(error) {
+                console.error('WebSocket error:', error);
+            };
+        }
+
+        connect(); // 初次连接
+    </script>
+</body>
+</html>
