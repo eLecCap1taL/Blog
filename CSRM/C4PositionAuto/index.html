@@ -1,43 +1,28 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>WebSocket Client</title>
+    <title>CSRM Map Viewer</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-    <h1>WebSocket Client</h1>
-    <script>
-        let socket;
-        const url = 'ws://localhost:8000'; // WebSocket 服务器地址
-
-        function connect() {
-            socket = new WebSocket(url);
-
-            socket.onopen = function() {
-                console.log('Connected to WebSocket server');
-            };
-
-            socket.onmessage = function(event) {
-                try {
-                    const coords = JSON.parse(event.data);
-                    console.log('Received Coordinates:', coords);
-                } catch (e) {
-                    console.error('Error parsing coordinates:', e);
-                }
-            };
-
-            socket.onclose = function(event) {
-                console.log('WebSocket connection closed. Attempting to reconnect...');
-                setTimeout(connect, 1000); // 每秒尝试重连一次
-            };
-
-            socket.onerror = function(error) {
-                console.error('WebSocket error:', error);
-            };
-        }
-
-        connect(); // 初次连接
-    </script>
+    <div class="container">
+        <div class="controls">
+            <select id="mapSelect">
+                <option value="">选择地图</option>
+            </select>
+            <p>请不要忘了在本地开启对应的程序</p>
+        </div>
+        <div id="mapContainer">
+            <img id="mapImage" src="" alt="上层地图">
+            <img id="substructureImage" src="" alt="下层地图">
+            <div id="dotContainer"></div>
+        </div>
+    </div>
+    <script src="script.js"></script>
 </body>
+
 </html>
