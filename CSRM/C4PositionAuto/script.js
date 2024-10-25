@@ -349,21 +349,33 @@ observer.observe(mapImage, { attributes: true });
 // 初始化
 
 
-
-
-
-let reconnectTimeout; // Variable to store the timeout ID
-
-function connectWebSocket() {
+function updateButtonState(connected) {
+    const button = document.querySelector("body > div > div.controls > button");
+    if (!button){
+        console.log("op")
+        return; // 如果按钮元素不存在，则返回
+    }
+    if (connected) {
+        document.querySelector("body > div > div.controls > button").innerHTML='Connected'
+        button.classList.add("connected");
+        button.classList.remove("disconnected");
+    } else {
+        document.querySelector("body > div > div.controls > button").innerHTML='Disconnected'
+        button.classList.add("disconnected");
+        button.classList.remove("connected");
+    }
+}
+function connectWebSocket(type) {
     // 如果已有连接，先关闭旧的 WebSocket 连接
     if (socket) {
-        socket.close();
+        if(type == 1){
+            socket.close();
+        }else{
+            return ;
+        }
     }
 
     // 清除上一个 reconnect timeout
-    if (reconnectTimeout) {
-        clearTimeout(reconnectTimeout);
-    }
 
     const ip = document.getElementById("ipInput").value || "localhost";
     const port = document.getElementById("portInput").value || "8000";
@@ -373,6 +385,7 @@ function connectWebSocket() {
 
     socket.onopen = function() {
         console.log("Connected to WebSocket server");
+        updateButtonState(1);
     };
 
     socket.onmessage = function(event) {
@@ -382,14 +395,17 @@ function connectWebSocket() {
 
     socket.onclose = function() {
         console.log("WebSocket connection closed. Trying to reconnect...");
-        reconnectTimeout = setTimeout(connectWebSocket, 3000); // Attempt to reconnect after 1 second
+        updateButtonState(false);
+        setTimeout(function(){connectWebSocket(2)}, 3000); // Attempt to reconnect after 1 second
     };
 
     socket.onerror = function(error) {
         console.error("WebSocket error:", error);
+        updateButtonState(false);
     };
 }
-window.onload = function() {
+document.addEventListener("DOMContentLoaded", function() {
     fetchMapNames();
-    connectWebSocket(); // Connect on page load
-};
+    updateButtonState(false);
+    // connectWebSocket(1); // Connect on page load
+});
